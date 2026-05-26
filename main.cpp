@@ -108,7 +108,9 @@ void menu(){
     cout<<"3. Login System\n";
     cout<<"4. Exit\n";
     cin>>choice;
-
+    cin.clear();
+    cin.ignore(10000, '\n');
+    
     switch(choice){
         case 1:
         calculator();
