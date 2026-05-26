@@ -21,8 +21,13 @@ int main() {
     else if(op == 'x'){
     cout<<num1<<"x"<<num2<<"="<<num1*num2;
     }
-    else if(op == '/'){
-    cout<<num1<<"/"<<num2<<"="<<num1/num2;
+    else if(op == '/') {
+        if(num2 == 0){
+            cout<<"Cannot divide by 0!";
+        }
+        else{
+            cout<<num1<<"/"<<num2<<"="<<num1/num2;
+        }
     }
 else{
     cout<<"Invalid Option!";
