@@ -1,5 +1,3 @@
-\\ Under Development
-
 #include <iostream>
 using namespace std;
 
@@ -42,19 +40,32 @@ int main(){
             }
             break;
 
-        case 3:
-            cout<<"Under Development!";
+        case 3: {
+            cout<<"Enter the name of the student to search: "<<endl;
+            string searchName;
+            cin>>searchName;
+            bool found = false;
+            for(int i = 0; i < count; i++){
+                if(students[i] == searchName){
+                    cout<<"Student found at position: "<<i+1<<endl;
+                    found = true;
+                    break;
+                }
+            }
+            if(!found){
+                cout<<"Student not found!"<<endl;
+            }
             break;
+        }
 
         case 4:
             cout<<"Exiting....";
             break;
 
         default:
-        cout<<"Invalid Option!";
+            cout<<"Invalid Option!";
             break;
         }
-
     }
-while(choice != 4);
+    while(choice != 4);
 }
