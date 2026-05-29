@@ -2,6 +2,7 @@
 using namespace std;
 
 string students[100];
+bool deleted[100] = {false};
 int count = 0;
 
 int main(){
@@ -11,7 +12,8 @@ int main(){
         cout<<"1. Add Student"<<endl;
         cout<<"2. View Students"<<endl;
         cout<<"3. Search Students"<<endl;
-        cout<<"4. Exit"<<endl;
+        cout<<"4. Delete Students"<<endl;
+        cout<<"5. Exit"<<endl;
         cin>>choice;
         cin.clear();
         cin.ignore(10000, '\n');
@@ -21,6 +23,7 @@ int main(){
         case 1:
             cout<<"Enter Name of the Student: "<<endl;
             cin>>students[count];
+            deleted[count] = false;
             cout<<"Student Added!";
             
             count++;
@@ -34,8 +37,10 @@ int main(){
             }
             else{
                 for(int i = 0; i < count; i++){
-                    cout<< i+1<<". "
-                        << students[i]<<endl;
+                    if(deleted[i] == false){
+                        cout<< i+1<<". "
+                            << students[i]<<endl;
+                    }
                 }
             }
             break;
@@ -46,7 +51,7 @@ int main(){
             cin>>searchName;
             bool found = false;
             for(int i = 0; i < count; i++){
-                if(students[i] == searchName){
+                if(students[i] == searchName && deleted[i] == false){
                     cout<<"Student found at position: "<<i+1<<endl;
                     found = true;
                     break;
@@ -58,7 +63,29 @@ int main(){
             break;
         }
 
-        case 4:
+        case 4: {
+            cout<<"Enter name of the Student to delete: "<<endl;
+            string deleteName;
+            cin>>deleteName;
+            
+            bool found = false;
+
+            for(int i = 0; i < count; i++) {
+                if(students[i] == deleteName && deleted[i] == false){
+                    deleted[i] = true;
+                    found = true;
+
+                    cout<<"Student Deleted!"<<endl;
+                    break;
+                }
+            }
+            if(!found){
+                cout<<"Student not found!"<<endl;
+            }
+            break;
+        }
+
+        case 5:
             cout<<"Exiting....";
             break;
 
@@ -67,5 +94,5 @@ int main(){
             break;
         }
     }
-    while(choice != 4);
+    while(choice != 5);
 }
