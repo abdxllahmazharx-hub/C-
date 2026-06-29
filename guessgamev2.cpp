@@ -60,7 +60,8 @@ std::cout<<"You Loose"<<std::endl;
 
 
 int main(){
-    while (true)
+    bool running = true;
+    while (running)
     {
     int choice;
     
@@ -75,7 +76,7 @@ int main(){
     {
     case 1:
         StartGuessGame();
-        
+        break;
     case 2:
         PrintRules();
         Sleep(5000);
@@ -84,9 +85,12 @@ int main(){
         PrintCredits();
         Sleep(5000);
         break;
+        
     case 4:
         Exit();
+        running = false;
         break;
+    
     default:
         std::cout<<"Invalid Option!"<<std::endl;
         
