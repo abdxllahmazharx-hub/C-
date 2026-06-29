@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <Windows.h>
 
 void PrintMainMenu() {
     std::cout<<"\n===================="<<std::endl;
@@ -59,6 +60,8 @@ std::cout<<"You Loose"<<std::endl;
 
 
 int main(){
+    while (true)
+    {
     int choice;
     
     PrintMainMenu();
@@ -72,20 +75,23 @@ int main(){
     {
     case 1:
         StartGuessGame();
-        break;
+        
     case 2:
         PrintRules();
+        Sleep(5000);
         break;
     case 3:
         PrintCredits();
+        Sleep(5000);
         break;
     case 4:
         Exit();
         break;
     default:
         std::cout<<"Invalid Option!"<<std::endl;
-        break;
+        
     }
     
-    return 0;
+   
+}
 }
